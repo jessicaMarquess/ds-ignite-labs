@@ -6,9 +6,10 @@ export interface HeadingProps {
    size?: 'lg' | 'xl' | '2xl';
    children: ReactNode;
    asChild?: boolean;
+   className?: string;
 }
 
-export const Heading = ({ size = 'xl', children, asChild }: HeadingProps) => {
+export const Heading = ({ size = 'xl', children, asChild, className }: HeadingProps) => {
    const Comp = asChild ? Slot : 'h2';
    return (
       <Comp className={clsx(
@@ -17,7 +18,8 @@ export const Heading = ({ size = 'xl', children, asChild }: HeadingProps) => {
             'text-lg': size === 'lg',
             'text-xl': size === 'xl',
             'text-2xl': size === '2xl',
-         }
+         },
+         className,
       )}>
          {children}
       </Comp>
